@@ -58,7 +58,9 @@ public class Query extends AbstractConnector {
             query = (String) getParameter(messageContext, "query");
             params = (String) getParameter(messageContext, "params");
             //System.out.println(params);
-            paramsArr = params.split(";");
+            if (params != null) {
+                paramsArr = params.split(";");
+            }
 
             dataSourceInformation = getDataSourceInformation();
             if (execute(messageContext)) {
@@ -115,6 +117,7 @@ public class Query extends AbstractConnector {
         int column = 1;
         try {
             ps = conn.prepareStatement(query);
+            if(paramsArr == null) return ps;
 
             for (String p : paramsArr) {
                 String[] param = p.split(",");
@@ -282,9 +285,9 @@ public class Query extends AbstractConnector {
                     row = AXIOMUtil.stringToOM("<" + colName + "/>");
                     if (rs.getBytes(i) != null) {
                         //if (getStringType(rs.getMetaData().getColumnClassName(i))) {
-                            value = new String(rs.getBytes(i));
+                        value = new String(rs.getBytes(i));
                         //} else {
-                          //  value = new sun.misc.BASE64Encoder().encode(rs.getBytes(i));
+                        //  value = new sun.misc.BASE64Encoder().encode(rs.getBytes(i));
                         //}
                     } else {
                         value = "";
