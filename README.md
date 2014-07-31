@@ -1,6 +1,6 @@
 dbconnector : Sample Sequence / Usage
 =======================================
-
+```xml
 <sequence xmlns="http://ws.apache.org/ns/synapse" name="dbconnectorSeq">
    <dbconnector.query>
       <dbUser>root</dbUser>
@@ -17,3 +17,4 @@ dbconnector : Sample Sequence / Usage
    <property name="NO_ENTITY_BODY" action="remove" scope="axis2"></property>
    <respond></respond>
 </sequence>
+```
