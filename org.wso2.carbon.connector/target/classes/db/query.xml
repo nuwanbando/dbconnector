@@ -1,0 +1,14 @@
+<template name="query" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="dbUser" description="Username for the database." />
+    <parameter name="dbPass" description="Password for the database." />
+    <parameter name="jdbcURL" description="JDBC connection string for the database." />
+    <parameter name="jdbcDriver" description="JDBC Driver FQCN - the jar for this driver should be placed in lib." />
+    <parameter name="query" description="Query to execute." />
+    <parameter name="params" description="Query params" />
+
+    <sequence>
+
+        <class name="org.wso2.carbon.connector.dbconnector.Query"/>
+
+    </sequence>
+</template>
